@@ -1,4 +1,5 @@
 🚀 study_notion
+
 Struggling to build a modern, full-featured online learning platform? Study Notion is a game-changing EdTech project, providing a complete MERN stack solution for instructors and students. This repository offers a robust foundation for creating, managing, and selling educational content, complete with secure payments, progress tracking, and media management.
 
 ✨ Key Features
@@ -42,52 +43,41 @@ erDiagram
         string password
         string accountType
         string image
-        string token
-        array courses
     }
     PROFILE {
         string dateOfBirth
         string about
-        string contactNumber
         string gender
     }
     COURSE {
         string courseName
-        string courseDescription
-        string instructor
         string price
         string thumbnail
-        array studentsEnrolled
     }
     SECTION {
         string sectionName
-        array subSections
     }
     SUB_SECTION {
         string title
-        string timeDuration
         string description
         string videoUrl
     }
     RATING_AND_REVIEW {
-        string user
-        integer rating
+        int rating
         string review
     }
     CATEGORY {
         string name
         string description
-        array courses
     }
 
-    USER ||--|{ PROFILE : "has one"
-    USER ||--o{ COURSE : "can enroll in many"
-    USER ||--o{ RATING_AND_REVIEW : "gives"
+    USER ||--|{ PROFILE : "has"
+    USER ||--o{ COURSE : "enrolls"
+    USER ||--o{ RATING_AND_REVIEW : "creates"
     COURSE ||--|{ SECTION : "contains"
-    COURSE ||--o{ RATING_AND_REVIEW : "receives"
     COURSE }o--|| CATEGORY : "belongs to"
+    COURSE ||--o{ RATING_AND_REVIEW : "has"
     SECTION ||--|{ SUB_SECTION : "contains"
-
 ⚡ Quick Start Guide
 Clone the Repository:
 
@@ -105,7 +95,7 @@ cd server && npm install
 # Install client dependencies
 cd ../ && npm install
 Setup Environment Variables:
-Create a .env file in the server/config/ directory and add your MongoDB URI, JWT secret, and API keys for Cloudinary and Razorpay.
+Create a .env file in the server directory and add your MongoDB URI, JWT secret, and API keys for Cloudinary and Razorpay.
 
 Run the Application:
 Start both the backend and frontend servers.
