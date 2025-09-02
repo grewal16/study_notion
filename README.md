@@ -1,5 +1,4 @@
 🚀 study_notion
-
 Struggling to build a modern, full-featured online learning platform? Study Notion is a game-changing EdTech project, providing a complete MERN stack solution for instructors and students. This repository offers a robust foundation for creating, managing, and selling educational content, complete with secure payments, progress tracking, and media management.
 
 ✨ Key Features
@@ -30,7 +29,7 @@ Services & APIs: Razorpay for payments, Cloudinary for media storage, Nodemailer
 State Management: Redux Toolkit for efficient and predictable state management on the frontend.
 
 Architecture Summary:
-Study Notion is a classic client-server application. The backend, built with Node.js and Express.js, follows a layered architecture (Routes -> Controllers -> Models) to provide a robust REST API. The frontend is a responsive single-page application (SPA) built with React.js, which consumes this API to deliver a seamless user experience for students and instructors.
+Study Notion is a classic client-server application. The backend, built with Node.js and Express.js, follows a layered architecture (Routes -> Controllers -> Models) to provide a robust REST API. The frontend is a responsive single-page application (SPA) built with React.js, which consumes this API to deliver a seamless user experience.
 
 📊 Architecture & Database Schema
 Code snippet
@@ -40,7 +39,6 @@ erDiagram
         string firstName
         string lastName
         string email
-        string password
         string accountType
         string image
     }
@@ -68,11 +66,10 @@ erDiagram
     }
     CATEGORY {
         string name
-        string description
     }
 
     USER ||--|{ PROFILE : "has"
-    USER ||--o{ COURSE : "enrolls"
+    USER ||--o{ COURSE : "enrolls in"
     USER ||--o{ RATING_AND_REVIEW : "creates"
     COURSE ||--|{ SECTION : "contains"
     COURSE }o--|| CATEGORY : "belongs to"
@@ -106,3 +103,5 @@ Bash
 npm start
 # Start the frontend app (from the root folder)
 npm start
+📜 License
+This project does not contain a license file.
