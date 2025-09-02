@@ -1,6 +1,3 @@
-
-
-````markdown
 # 🚀 study_notion
 
 Struggling to build a modern, full-featured online learning platform? **Study Notion** is a game-changing EdTech project, providing a complete MERN stack solution for instructors and students. This repository offers a robust foundation for creating, managing, and selling educational content, complete with secure payments, progress tracking, and media management.
@@ -76,51 +73,3 @@ erDiagram
     COURSE }o--|| CATEGORY : "belongs to"
     COURSE ||--o{ RATING_AND_REVIEW : "has"
     SECTION ||--|{ SUB_SECTION : "contains"
-````
-
------
-
-## ⚡ Quick Start Guide
-
-1.  **Clone the Repository:**
-
-    ```bash
-    git clone [https://github.com/grewal16/study_notion.git](https://github.com/grewal16/study_notion.git)
-    cd study_notion
-    ```
-
-2.  **Install Dependencies:**
-
-    ```bash
-    # Install server dependencies
-    cd server
-    npm install
-
-    # Go back to root and install client dependencies
-    cd ..
-    npm install
-    ```
-
-3.  **Setup Environment Variables:**
-    Create a `.env` file in the `server` directory and add your MongoDB URI, JWT secret, and API keys for Cloudinary and Razorpay.
-
-4.  **Run the Application:**
-
-    ```bash
-    # Start the backend server (from the server folder)
-    npm start
-
-    # Start the frontend app (from the root folder)
-    npm start
-    ```
-
------
-
-## 📜 License
-
-*This project does not contain a license file.*
-
-```
-
-This method will 100% solve the problem.
-```
