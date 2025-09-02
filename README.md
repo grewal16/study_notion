@@ -31,10 +31,10 @@ State Management: Redux Toolkit for efficient and predictable state management o
 Architecture Summary:
 Study Notion is a classic client-server application. The backend, built with Node.js and Express.js, follows a layered architecture (Routes -> Controllers -> Models) to provide a robust REST API. The frontend is a responsive single-page application (SPA) built with React.js, which consumes this API to deliver a seamless user experience.
 
-📊 Architecture & Database Schema
-Code snippet
+## 📊 Architecture & Database Schema
 
 ` ```mermaid `
+
 erDiagram
     USER {
         string firstName
