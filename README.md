@@ -34,6 +34,7 @@ Study Notion is a classic client-server application. The backend, built with Nod
 📊 Architecture & Database Schema
 Code snippet
 
+` ```mermaid `
 erDiagram
     USER {
         string firstName
@@ -75,6 +76,7 @@ erDiagram
     COURSE }o--|| CATEGORY : "belongs to"
     COURSE ||--o{ RATING_AND_REVIEW : "has"
     SECTION ||--|{ SUB_SECTION : "contains"
+` ``` `
 ⚡ Quick Start Guide
 Clone the Repository:
 
