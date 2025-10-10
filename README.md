@@ -1,163 +1,169 @@
-# 🚀 StudyNotion: Your Gateway to Next-Level Learning
+# 🚀 StudyNotion: The All-in-One EdTech Platform
 
-<p align="center"><img src="./images/mainpage.png" alt="StudyNotion Main Page" width="700"></p>
+<p align="center"><img src="./src/assets/Logo/Logo-Full-Dark.png" alt="StudyNotion Logo" width="300"></p>
 
 ## Short Description
 
-StudyNotion is a cutting-edge, full-stack online learning platform (Learning Management System - LMS) designed to empower both students and instructors. It offers a seamless and interactive educational experience, featuring robust course management, secure payment processing, comprehensive user profiles, and an intuitive interface to foster a dynamic learning environment. From creating engaging course content to tracking student progress and handling secure transactions, StudyNotion provides a complete solution for modern online education.
+StudyNotion is a dynamic and comprehensive EdTech platform designed to empower both learners and educators. It offers a robust environment for creating, managing, and consuming online courses, complete with secure payment processing, progress tracking, and interactive review features. Whether you're looking to acquire new skills or share your expertise with the world, StudyNotion provides a seamless and engaging learning experience.
+
+## 🛡️ Project Health & Status
+
+StudyNotion is currently in active development, showcasing a comprehensive feature set for a modern EdTech application. The codebase is structured for scalability and maintainability. While core functionalities are robust, future enhancements will include dedicated unit and integration testing frameworks and CI/CD pipelines to ensure production readiness and continuous delivery with high confidence.
 
 ## ✨ Key Features
 
-*   **Dynamic Course Management:** Instructors can effortlessly create, edit, and publish multi-section, multi-subsection courses, complete with rich media content.
-*   **Comprehensive User Authentication:** Secure signup, login, password reset, and email verification, supporting different user roles (Student, Instructor, Admin) for tailored experiences.
-*   **Intuitive Dashboard:** Personalized dashboards for students to track enrolled courses and progress, and for instructors to manage their courses, view analytics, and track earnings.
-*   **Secure Payment Integration:** Seamless course enrollment and purchase powered by Razorpay, ensuring reliable and secure transactions.
-*   **Rich Media Handling:** Integrated with Cloudinary for efficient storage and delivery of video lectures and course thumbnails.
-*   **Interactive Learning Path:** Students can mark course sections as complete, track their overall progress, and leave ratings and reviews.
-*   **Engaging Frontend Experience:** A responsive and visually appealing user interface built with React and styled with Tailwind CSS, offering a smooth browsing and learning journey.
-*   **Robust Backend APIs:** A powerful Node.js/Express.js backend handles all business logic, data persistence, and external service integrations.
-*   **Real-time Communication:** Automated email notifications for course enrollment, password updates, and contact form submissions.
+*   **Secure Authentication & Authorization:** Robust user management with email verification, password reset, and role-based access control (Student, Instructor, Admin).
+*   **Course Creation & Management:** Instructors can effortlessly create, organize, and manage courses, including detailed sections and sub-sections.
+*   **Rich Media Content:** Seamless integration with Cloudinary for handling video and image uploads, ensuring high-quality course materials.
+*   **Progress Tracking:** Students can track their course completion and watch history, fostering a structured learning journey.
+*   **Ratings & Reviews:** An integrated system for students to rate and review courses, providing valuable feedback and promoting quality.
+*   **Payment Gateway Integration:** Secure course enrollment through Razorpay, offering a smooth and reliable transaction experience.
+*   **Profile Management:** Users can update their profiles, including changing profile pictures and personal information.
+*   **Interactive UI:** A responsive and intuitive user interface built with React.js and styled using Tailwind CSS.
+*   **Email Notifications:** Automated email services for critical actions like course enrollment, password updates, and contact form responses.
 
 ## Who is this for?
 
-*   **Aspiring Students:** Looking for a structured and interactive platform to learn new skills and advance their knowledge.
-*   **Passionate Instructors:** Seeking an easy-to-use platform to share their expertise, create engaging courses, and reach a global audience.
-*   **Educational Institutions:** Wanting to launch or enhance their online learning offerings with a scalable and feature-rich LMS.
-*   **Full-Stack Developers:** Interested in a comprehensive example of a modern MERN stack application, featuring authentication, payment gateways, and media management.
+*   **Aspiring Learners:** Discover a vast catalog of courses across various domains to upskill or learn something new.
+*   **Expert Educators:** Share your knowledge and passion by easily creating and publishing your own courses.
+*   **EdTech Innovators:** A strong foundation for building and extending powerful online learning experiences.
+*   **Developers:** An excellent reference for full-stack MERN applications with modern features and best practices.
 
 ## Technology Stack & Architecture
 
-StudyNotion is built on a robust MERN (MongoDB, Express.js, React, Node.js) stack, enhanced with industry-leading third-party services for a scalable and high-performance learning experience.
+StudyNotion leverages a modern MERN stack for a scalable and performant application:
 
-*   **Frontend:** React.js, React Router DOM, Redux Toolkit, Tailwind CSS, React Hook Form, React-Hot-Toast.
-*   **Backend:** Node.js, Express.js, MongoDB (with Mongoose ORM), JSON Web Tokens (JWT) for authentication, Bcrypt for password hashing.
-*   **Cloud Services:** Cloudinary (for media management), Razorpay (for payment gateway), Nodemailer (for email services).
-*   **Deployment:** Designed for easy deployment to cloud platforms.
+*   **Frontend:**
+    *   **React.js:** A declarative, component-based JavaScript library for building user interfaces.
+    *   **Redux Toolkit:** Efficient state management for a predictable application state.
+    *   **Tailwind CSS:** A utility-first CSS framework for rapid and consistent styling.
+*   **Backend:**
+    *   **Node.js & Express.js:** A powerful JavaScript runtime and web framework for building RESTful APIs.
+    *   **MongoDB (Mongoose ODM):** A NoSQL database for flexible and scalable data storage.
+*   **Cloud Services:**
+    *   **Cloudinary:** Cloud-based media management for images and videos.
+    *   **Razorpay:** Integrated payment gateway for secure online transactions.
+    *   **Nodemailer:** For sending automated email notifications.
 
 ## 📊 Architecture & Database Schema
 
-The core architecture of StudyNotion follows a client-server model, with a React frontend communicating with a Node.js/Express.js backend. Data is persistently stored in a MongoDB database, with relationships managed through Mongoose schemas.
-
-The simplified Entity-Relationship Diagram (ERD) below illustrates the key entities and their relationships within the StudyNotion database:
+StudyNotion's architecture is built around a clear separation of concerns, ensuring a robust and maintainable system. The backend services communicate with a MongoDB database, whose schema is inferred as follows:
 
 ```mermaid
 erDiagram
-    User ||--o{ Profile : "has"
-    User ||--o{ Course : "instructs"
-    User ||--o{ CourseProgress : "tracks"
-    User ||--o{ RatingAndReview : "reviews"
-    Course ||--|{ Category : "belongs to"
-    Course ||--o{ Section : "contains"
-    Course ||--o{ RatingAndReview : "gets reviewed by"
-    Section ||--o{ SubSection : "includes"
-    CourseProgress ||--|{ Course : "for"
-    OTP ||--|{ User : "validates"
-
-    User {
-        string ID
-        string Name
-        string Email
-        string Password
-        string AccountType
+    USER ||--o{ PROFILE : has
+    USER ||--o{ OTP : generates
+    USER ||--o{ COURSE : teaches
+    USER ||--o{ RATING_AND_REVIEW : reviews
+    USER ||--o{ COURSE_PROGRESS : tracks
+    COURSE ||--o{ SECTION : contains
+    COURSE ||--o{ RATING_AND_REVIEW : getsReviewedBy
+    COURSE ||--o{ COURSE_PROGRESS : hasProgressOf
+    CATEGORY ||--o{ COURSE : categorizes
+    SECTION ||--o{ SUBSECTION : groups
+    COURSE_PROGRESS ||--o{ SUBSECTION : completes
+    
+    USER {
+        string _id PK
+        string firstName
+        string email
+        string accountType
     }
-    Profile {
-        string ID
-        string About
-        string ContactNumber
-    }
-    Course {
-        string ID
-        string CourseName
-        string Description
-        number Price
-        string Thumbnail
-    }
-    Category {
-        string ID
-        string Name
-    }
-    Section {
-        string ID
-        string SectionName
-    }
-    SubSection {
-        string ID
-        string Title
-        string VideoUrl
-    }
-    RatingAndReview {
-        string ID
-        number Rating
-        string Review
-    }
-    CourseProgress {
-        string ID
-        array CompletedVideos
+    PROFILE {
+        string _id PK
+        string about
+        string gender
     }
     OTP {
-        string ID
-        string Email
-        string OTP
+        string _id PK
+        string email
+        string otp
+    }
+    COURSE {
+        string _id PK
+        string courseName
+        string description
+        string instructorID FK
+        string categoryID FK
+    }
+    CATEGORY {
+        string _id PK
+        string name
+        string description
+    }
+    SECTION {
+        string _id PK
+        string sectionName
+        string courseID FK
+    }
+    SUBSECTION {
+        string _id PK
+        string title
+        string videoUrl
+        string sectionID FK
+    }
+    RATING_AND_REVIEW {
+        string _id PK
+        string review
+        int rating
+        string userID FK
+        string courseID FK
+    }
+    COURSE_PROGRESS {
+        string _id PK
+        string userID FK
+        string courseID FK
+        string[] completedSubsections
     }
 ```
 
+## ⚙️ Configuration & Deployment
+
+To get StudyNotion up and running, you'll need to configure environment variables for both the frontend and backend.
+
+1.  **Environment Variables:** Create a `.env` file in both the project root and the `server/` directory. Populate them with necessary credentials for:
+    *   MongoDB Connection URI
+    *   Cloudinary API Keys
+    *   Razorpay API Keys
+    *   JWT Secret for authentication
+    *   Email service credentials (e.g., Nodemailer config)
+    *   Port numbers
+2.  **Install Dependencies:**
+    *   Navigate to the root directory and run `npm install`.
+    *   Navigate into the `server/` directory and run `npm install`.
+
 ## ⚡ Quick Start Guide
 
-To get StudyNotion up and running on your local machine, follow these steps:
+Follow these steps to set up and run StudyNotion locally:
 
 1.  **Clone the Repository:**
     ```bash
     git clone https://github.com/grewal16/study_notion.git
     cd study_notion
     ```
-
-2.  **Install Dependencies:**
-    *   **Frontend (Root Directory):**
-        ```bash
-        npm install
-        # OR
-        yarn install
-        ```
-    *   **Backend (Server Directory):**
-        ```bash
-        cd server
-        npm install
-        # OR
-        yarn install
-        cd ..
-        ```
-
-3.  **Set Up Environment Variables:**
-    Create a `.env` file in the `server` directory and populate it with your credentials:
+2.  **Install Frontend Dependencies:**
+    ```bash
+    npm install
     ```
-    PORT=4000
-    MONGO_DB_URL=YOUR_MONGODB_CONNECTION_STRING
-    JWT_SECRET=YOUR_JWT_SECRET_KEY
-    CLOUDINARY_CLOUD_NAME=YOUR_CLOUDINARY_CLOUD_NAME
-    CLOUDINARY_API_KEY=YOUR_CLOUDINARY_API_KEY
-    CLOUDINARY_API_SECRET=YOUR_CLOUDINARY_API_SECRET
-    MAIL_USER=YOUR_EMAIL_FOR_NODEMAILER
-    MAIL_PASS=YOUR_EMAIL_APP_PASSWORD
-    RAZORPAY_KEY_ID=YOUR_RAZORPAY_KEY_ID
-    RAZORPAY_KEY_SECRET=YOUR_RAZORPAY_KEY_SECRET
-    CLIENT_URL=http://localhost:3000
+3.  **Install Backend Dependencies:**
+    ```bash
+    cd server
+    npm install
+    cd .. # Go back to root directory
     ```
+4.  **Set up Environment Variables:** Create `.env` files as described in the "Configuration & Deployment" section, both at the project root and in the `server/` directory.
+5.  **Start the Backend Server:**
+    ```bash
+    cd server
+    node index.js # or npm start if a start script is defined in server/package.json
+    cd ..
+    ```
+6.  **Start the Frontend Application:**
+    ```bash
+    npm start
+    ```
+    This will typically open the application in your browser at `http://localhost:3000`.
 
-4.  **Start the Application:**
-    *   **Backend Server:**
-        ```bash
-        cd server
-        npm start
-        # OR
-        node index.js
-        cd ..
-        ```
-    *   **Frontend Development Server:**
-        ```bash
-        npm start
-        # OR
-        yarn start
-        ```
+## 📜 License
 
-5.  **Access StudyNotion:**
-    Open your browser and navigate to `http://localhost:3000`. You're now ready to explore StudyNotion!
+No license file was explicitly found within the repository. Please contact the repository owner for licensing information.
